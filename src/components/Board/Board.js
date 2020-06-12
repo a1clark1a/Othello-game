@@ -5,14 +5,18 @@
 import React from "react"
 import Square from "./Square/Square"
 
-const Board = () => {
+const Board = ({ size }) => {
   const container = []
-  for (let i = 0; i < 8; i++) {
+  for (let i = 0; i < size; i++) {
     const row = []
-    for (let j = 0; j < 8; j++) {
-      row.push(<Square position={`${j}`} />)
+    for (let j = 0; j < size; j++) {
+      row.push(<Square key={j} position={`${j + i * size}`} />)
     }
-    container.push(<div className="row">{row}</div>)
+    container.push(
+      <div className="row" key={i}>
+        {row}
+      </div>
+    )
   }
   return <div className="container">{container}</div>
 }

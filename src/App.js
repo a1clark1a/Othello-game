@@ -5,6 +5,7 @@
 //TODO Handle AI
 //TODO Handle Multiplayer
 //TODO Make App into PWA
+//TODO Setup logic for finding middle of board regardless of board size
 
 import React from "react"
 import Board from "./components/Board/Board"
@@ -16,7 +17,7 @@ const App = () => {
       <h1 className="title">Othello Game</h1>
       <ScoreBoard />
       <div className="board-container">
-        <Board />
+        <Board size={8} />
       </div>
     </main>
   )
