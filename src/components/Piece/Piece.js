@@ -2,7 +2,9 @@
 import React from "react"
 
 const Piece = ({ position, color }) => {
-  return <div className="piece">piece</div>
+  return (
+    <div className={`piece ${color}`}>{color !== "" ? color : "piece"}</div>
+  )
 }
 
 export default Piece

@@ -20,6 +20,10 @@
   margin-top: 50px;
 }
 
+.row {
+  display: flex;
+}
+
 /*Square */
 .square {
   width: 80px;
@@ -42,4 +46,13 @@ button:hover {
   justify-content: center;
   align-items: center;
   margin: auto;
+}
+
+.black {
+  background-color: black;
+  color: white;
+}
+
+.white {
+  background-color: white;
 }
