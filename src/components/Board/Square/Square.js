@@ -16,23 +16,30 @@ const Square = ({ position, pos, pieceInfo }) => {
 
   const {
     player_blackT,
-    player_whiteT,
     togglePlayer_blackT,
-    togglePlayer_whiteT,
+    currentBoard,
+    setCurrenBoard,
   } = context
 
   useEffect(() => {
     if (pieceInfo.hasPiece) {
       setPiece(pieceInfo.hasPiece)
       setColor(pieceInfo.color)
+    } else {
+      setCurrenBoard((state) => {
+        state.squares[position] = null
+        return state
+      })
     }
+
     return () => {
       setPiece(false)
       setColor("")
     }
-  }, [position])
+  }, [])
 
   const handleClick = () => {
+    console.log(position)
     setPiece(true)
     setColor(player_blackT ? "black" : "white")
     togglePlayer_blackT(!player_blackT)

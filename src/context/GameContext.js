@@ -1,5 +1,11 @@
 import React, { useState } from "react"
 
+export const nullBoard = {
+  squares: [],
+  black: 0,
+  white: 0,
+}
+
 const Context = React.createContext({
   error: null,
   board_size: 8,
@@ -8,11 +14,15 @@ const Context = React.createContext({
   black_score: 0,
   white_score: 0,
 
+  currentBoard: nullBoard,
+
   setError: () => {},
   setBoardSize: () => {},
+
   setBlackScore: () => {},
   setWhiteScore: () => {},
   togglePlayer_blackT: () => {},
+  setCurrenBoard: () => {},
 })
 
 export default Context
@@ -23,6 +33,7 @@ export function GameProvider(props) {
   const [black_score, setBlackScore] = useState(0)
   const [white_score, setWhiteScore] = useState(0)
   const [board_size, setBoardSize] = useState(8)
+  const [currentBoard, setCurrenBoard] = useState(nullBoard)
 
   const clearError = () => {
     setError(null)
@@ -34,12 +45,14 @@ export function GameProvider(props) {
     player_blackT,
     black_score,
     white_score,
+    currentBoard,
 
     setError,
     setBoardSize,
     setBlackScore,
     setWhiteScore,
     togglePlayer_blackT,
+    setCurrenBoard,
   }
 
   return (

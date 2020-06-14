@@ -1,13 +1,13 @@
 //Main game board component
 //TODO Integrate game logic
 
-import React, { useContext, useEffect } from "react"
+import React, { useContext } from "react"
 import Square from "./Square/Square"
 import Context from "../../context/GameContext"
 
 const Board = () => {
   const context = useContext(Context)
-  const { board_size } = context
+  const { board_size, currentBoard } = context
 
   const container = []
   const initialPiece = {
@@ -15,10 +15,8 @@ const Board = () => {
     pos2: board_size / 2 + 1,
   }
 
-  useEffect(() => {})
   for (let row = 1; row <= board_size; row++) {
     const rowContainer = []
-
     for (let col = 1; col <= board_size; col++) {
       let pieceInfo = {
         hasPiece: false,
@@ -60,6 +58,7 @@ const Board = () => {
     )
   }
 
+  console.log(currentBoard)
   return <div className="container">{container}</div>
 }
 
