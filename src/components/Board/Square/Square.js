@@ -3,28 +3,39 @@
 //TODO Square is clickable
 //TODO Square holds piece component
 
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useContext } from "react"
+import Context from "../../../context/GameContext"
+
 import Piece from "../../Piece/Piece"
 
 const Square = ({ position, pos, pieceInfo }) => {
+  const context = useContext(Context)
+
   const [hasPiece, setPiece] = useState(false)
   const [color, setColor] = useState("")
+
+  const {
+    player_blackT,
+    player_whiteT,
+    togglePlayer_blackT,
+    togglePlayer_whiteT,
+  } = context
+
   useEffect(() => {
     if (pieceInfo.hasPiece) {
-      console.log(position)
-      console.log("col ", pos.col, "row ", pos.row)
-      console.log(pieceInfo)
       setPiece(pieceInfo.hasPiece)
       setColor(pieceInfo.color)
     }
-  }, [])
+    return () => {
+      setPiece(false)
+      setColor("")
+    }
+  }, [position])
 
   const handleClick = () => {
-    console.log(position)
-    console.log("col ", pos.col, "row ", pos.row)
     setPiece(true)
-    //TODO check for player/ai turn
-    setColor("black")
+    setColor(player_blackT ? "black" : "white")
+    togglePlayer_blackT(!player_blackT)
   }
   return (
     <button className="square" onClick={handleClick}>

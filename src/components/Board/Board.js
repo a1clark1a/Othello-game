@@ -1,22 +1,25 @@
 //Main game board component
-//TODO Add Game Pieces
 //TODO Integrate game logic
 
-import React from "react"
+import React, { useContext, useEffect } from "react"
 import Square from "./Square/Square"
+import Context from "../../context/GameContext"
 
-const Board = ({ size }) => {
+const Board = () => {
+  const context = useContext(Context)
+  const { board_size } = context
+
   const container = []
   const initialPiece = {
-    pos1: size / 2,
-    pos2: size / 2 + 1,
+    pos1: board_size / 2,
+    pos2: board_size / 2 + 1,
   }
 
-  console.log(initialPiece)
-  for (let row = 1; row <= size; row++) {
+  useEffect(() => {})
+  for (let row = 1; row <= board_size; row++) {
     const rowContainer = []
 
-    for (let col = 1; col <= size; col++) {
+    for (let col = 1; col <= board_size; col++) {
       let pieceInfo = {
         hasPiece: false,
         color: "",
@@ -24,31 +27,27 @@ const Board = ({ size }) => {
 
       //initial board piece check
       if (row === initialPiece.pos1 && col === initialPiece.pos1) {
-        console.log("row ", row, "col ", col, "black")
         pieceInfo.hasPiece = true
         pieceInfo.color = "black"
       }
       if (row === initialPiece.pos2 && col === initialPiece.pos2) {
-        console.log("row ", row, "col ", col, "black")
         pieceInfo.hasPiece = true
         pieceInfo.color = "black"
       }
 
       if (row === initialPiece.pos2 && col === initialPiece.pos1) {
-        console.log("row ", row, "col ", col, "white")
         pieceInfo.hasPiece = true
         pieceInfo.color = "white"
       }
 
       if (row === initialPiece.pos1 && col === initialPiece.pos2) {
-        console.log("row ", row, "col ", col, "white")
         pieceInfo.hasPiece = true
         pieceInfo.color = "white"
       }
       rowContainer.push(
         <Square
           key={col}
-          position={`${col + (row - 1) * size}`}
+          position={`${col + (row - 1) * board_size}`}
           pos={{ col, row }}
           pieceInfo={pieceInfo}
         />

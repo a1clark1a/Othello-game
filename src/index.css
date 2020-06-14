@@ -8,9 +8,14 @@
   text-align: center;
 }
 
+/*score board*/
 .score-container {
   display: flex;
   justify-content: space-evenly;
+}
+
+.settings-container {
+  text-align: center;
 }
 
 /*Board CSS */
