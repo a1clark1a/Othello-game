@@ -5,16 +5,13 @@ import Context from "../../context/GameContext"
 const Piece = ({ position, color }) => {
   const context = useContext(Context)
 
-  const { setCurrenBoard } = context
+  const { setCurrentBoard, black_score, setBlackScore, setWhiteScore } = context
   useEffect(() => {
     if (color) {
-      setCurrenBoard((state) => {
+      setCurrentBoard((state) => {
         state.squares[position] = color
-        if (color && color === "black") {
-          state.black++
-        } else {
-          state.white++
-        }
+        state.lastMove = position
+
         return state
       })
     }

@@ -1,15 +1,22 @@
 //Main game board component
 //TODO Integrate game logic
 
-import React, { useContext } from "react"
+import React, { useContext, useEffect } from "react"
 import Square from "./Square/Square"
 import Context from "../../context/GameContext"
 
 const Board = () => {
   const context = useContext(Context)
-  const { board_size, currentBoard } = context
+  const {
+    board_size,
+    currentBoard,
+    setCurrentBoard,
+    player_blackT,
+    black_score,
+    setBlackScore,
+  } = context
 
-  const container = []
+  let container = []
   const initialPiece = {
     pos1: board_size / 2,
     pos2: board_size / 2 + 1,

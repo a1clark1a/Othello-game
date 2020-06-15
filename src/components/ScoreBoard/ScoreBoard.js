@@ -1,12 +1,24 @@
 //TODO Allow players to set settings in this componenent
 
-import React, { useContext } from "react"
+import React, { useContext, useState } from "react"
 import Context from "../../context/GameContext"
 
 const ScoreBoard = () => {
   const context = useContext(Context)
+  const [chosenColor, chooseColor] = useState("black")
+  const {
+    black_score,
+    white_score,
+    board_size,
+    setBoardSize,
+    player_blackT,
+    togglePlayer_blackT,
+    resetGame,
+  } = context
 
-  const { black_score, white_score, board_size, setBoardSize } = context
+  const handleBoardChange = (e) => {
+    setBoardSize(parseInt(e.currentTarget.value))
+  }
 
   return (
     <div className="score-board">
@@ -24,7 +36,8 @@ const ScoreBoard = () => {
           id="size"
           name="size"
           value={board_size}
-          onChange={(e) => setBoardSize(parseInt(e.currentTarget.value))}
+          //TODO When board change reset game
+          onChange={(e) => handleBoardChange(e)}
         >
           <option value={4}>4x4</option>
           <option value={6}>6x6</option>
