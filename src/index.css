@@ -18,11 +18,18 @@
   text-align: center;
 }
 
+.toggle-button {
+  display: block;
+  margin: auto;
+  margin-top: 20px;
+  padding: 5px;
+}
+
 /*Board CSS */
 .board-container {
   display: flex;
   justify-content: center;
-  margin-top: 50px;
+  margin: 50px 20px 0 20px;
 }
 
 .row {
@@ -31,8 +38,8 @@
 
 /*Square */
 .square {
-  width: 80px;
-  height: 80px;
+  width: 35px;
+  height: 40px;
   border: 1px solid black;
   margin: 0 2px 2px 0;
 }
@@ -42,11 +49,15 @@ button:hover {
   border: solid 2px black;
 }
 
+select:hover {
+  cursor: pointer;
+}
+
 /*Piece */
 .piece {
   border: 1px solid black;
-  width: 50px;
-  height: 50px;
+  width: 25px;
+  height: 25px;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -61,4 +72,29 @@ button:hover {
 
 .white {
   background-color: white;
+  color: black;
+}
+
+@media screen and (min-width: 425px) {
+  .square {
+    width: 50px;
+    height: 50px;
+  }
+
+  .piece {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .square {
+    width: 80px;
+    height: 80px;
+  }
+
+  .piece {
+    width: 50px;
+    height: 50px;
+  }
 }
